@@ -1,8 +1,7 @@
-
-
 # 🪔 India's Curated Discovery Platform for Homegrown Instagram Brands
 
 ## Design Vision
+
 A premium, warm marketplace with a Pinterest-meets-luxury aesthetic. Soft beige/ivory/muted terracotta palette, serif + sans-serif font pairing, rounded cards with subtle shadows, smooth hover animations, and clean whitespace throughout. Mobile-first and responsive.
 
 ---
@@ -10,11 +9,13 @@ A premium, warm marketplace with a Pinterest-meets-luxury aesthetic. Soft beige/
 ## Phase 1: Foundation & Authentication
 
 ### Backend Setup (Lovable Cloud / Supabase)
+
 - Database schema: users, profiles, seller_applications, products, categories, orders, order_items, reviews, wishlists, followed_sellers
 - Role-based auth system (buyer, seller, admin) with separate user_roles table
 - Row-level security policies for all tables
 
 ### Authentication Pages
+
 - **Sign Up / Login** — Email-based auth with role selection (Buyer or Seller)
 - **Seller Onboarding Form** — Brand name, Instagram handle, category, sample images, brand story → submitted for admin approval
 - **Protected routes** based on user role
@@ -24,6 +25,7 @@ A premium, warm marketplace with a Pinterest-meets-luxury aesthetic. Soft beige/
 ## Phase 2: Buyer-Facing Storefront
 
 ### Homepage
+
 - Hero section with strong positioning statement and CTA
 - Featured categories: Embroidery, Candles, Rugs, Handmade Gifting
 - Trending Brands carousel
@@ -33,12 +35,14 @@ A premium, warm marketplace with a Pinterest-meets-luxury aesthetic. Soft beige/
 - Elegant footer
 
 ### Discovery & Browsing
+
 - Category-based browsing pages
 - Search bar with filters: price range, category, rating, location
 - Pinterest-style grid layout with hover effects
 - Wishlist heart button on product cards
 
 ### Product Page
+
 - Large image gallery
 - Product description, price, category
 - Seller info card (clickable to seller profile)
@@ -46,6 +50,7 @@ A premium, warm marketplace with a Pinterest-meets-luxury aesthetic. Soft beige/
 - Add to Cart & Save to Wishlist buttons
 
 ### Seller Profile Page
+
 - Brand story, Instagram link
 - Product catalog grid
 - Reviews section
@@ -56,16 +61,19 @@ A premium, warm marketplace with a Pinterest-meets-luxury aesthetic. Soft beige/
 ## Phase 3: Checkout & Orders (Stripe)
 
 ### Checkout Flow
+
 - Cart page with quantity controls
 - Address form
 - Stripe-powered secure checkout
 - Order confirmation page
 
 ### Order Tracking
+
 - Order status updates (Pending → Shipped → Delivered)
 - Order history in buyer account
 
 ### Buyer Account Dashboard
+
 - Order history
 - Saved wishlist
 - Followed sellers list
@@ -99,4 +107,3 @@ A premium, warm marketplace with a Pinterest-meets-luxury aesthetic. Soft beige/
 - Refund & Return policy page
 - Smooth page transitions and micro-interactions
 - Mobile responsiveness polish across all pages
-
