@@ -2,6 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import MarqueeBar from "@/components/home/MarqueeBar";
+import CategoryBubbles from "@/components/home/CategoryBubbles";
 import FeaturedCategories from "@/components/home/FeaturedCategories";
 import TrendingBrands from "@/components/home/TrendingBrands";
 import NewArrivals from "@/components/home/NewArrivals";
@@ -17,6 +18,7 @@ const Index = () => {
       <main>
         <HeroSection />
         <MarqueeBar />
+        <CategoryBubbles />
         <FeaturedCategories />
         <TrendingBrands />
         <NewArrivals />
