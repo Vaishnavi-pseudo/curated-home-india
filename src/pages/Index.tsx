@@ -20,9 +20,9 @@ const Index = () => {
         <FeaturedCategories />
         <TrendingBrands />
         <NewArrivals />
-        <TrustIndicators />
         <WeeklyMaker />
         <CommunityReviews />
+        <TrustIndicators />
         <NewsletterSection />
       </main>
       <Footer />
