@@ -212,7 +212,9 @@ const SellerApply = () => {
 
           <div className="mb-8">
             <h1 className="font-serif text-3xl font-bold text-foreground">Seller Application</h1>
-            <p className="mt-2 text-muted-foreground">Tell us about your brand and products. We carefully curate every seller on Kalakriti.</p>
+            <p className="mt-3 max-w-xl font-serif text-base italic leading-relaxed text-muted-foreground">
+              You make things. That's the job. Not scheduling posts, not responding to "is this still available?", not chasing payments. Hand us the chaos, keep the craft.
+            </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-8">
