@@ -34,7 +34,7 @@ const HeroSection = () => {
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
-              <Link to="/auth?mode=seller">
+              <Link to="/sell">
                 <Button variant="outline" size="lg" className="rounded-full px-8 font-sans text-sm font-semibold">
                   Sell on Kalakriti
                 </Button>
