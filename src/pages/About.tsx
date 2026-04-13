@@ -74,46 +74,6 @@ const About = () => {
               </div>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="grid grid-cols-2 gap-4"
-            >
-              <div className="space-y-4">
-                <div className="aspect-[3/4] overflow-hidden rounded-2xl bg-sand">
-                  <img
-                    src="https://images.unsplash.com/photo-1617634643784-5745ec0e54dc?w=400&h=530&fit=crop"
-                    alt="Artisan at work with embroidery"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="aspect-square overflow-hidden rounded-2xl bg-sand">
-                  <img
-                    src="https://images.unsplash.com/photo-1602607663604-59c816e08f1a?w=400&h=400&fit=crop"
-                    alt="Handmade candles"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              </div>
-              <div className="mt-8 space-y-4">
-                <div className="aspect-square overflow-hidden rounded-2xl bg-sand">
-                  <img
-                    src="https://images.unsplash.com/photo-1600166898405-da9535204843?w=400&h=400&fit=crop"
-                    alt="Handwoven textiles"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="aspect-[3/4] overflow-hidden rounded-2xl bg-sand">
-                  <img
-                    src="https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400&h=530&fit=crop"
-                    alt="Artisan crafting gifts"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              </div>
-            </motion.div>
           </div>
         </div>
       </section>
