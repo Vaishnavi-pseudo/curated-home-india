@@ -9,6 +9,7 @@ import SellerAuth from "./pages/SellerAuth";
 import SellerApply from "./pages/SellerApply";
 import NotFound from "./pages/NotFound";
 import Discover from "./pages/Discover";
+import About from "./pages/About";
 import CustomCursor from "./components/CustomCursor";
 
 const queryClient = new QueryClient();
