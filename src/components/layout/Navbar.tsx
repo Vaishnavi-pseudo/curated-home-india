@@ -20,17 +20,11 @@ const Navbar = () => {
           <Link to="/categories" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
             Discover
           </Link>
-          <Link to="/categories/embroidery" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
-            Embroidery
+          <Link to="/sell" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+            Collaborate
           </Link>
-          <Link to="/categories/candles" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
-            Candles
-          </Link>
-          <Link to="/categories/rugs" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
-            Rugs
-          </Link>
-          <Link to="/categories/handmade-gifting" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
-            Gifting
+          <Link to="/about" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">
+            About Us
           </Link>
         </div>
 
@@ -70,14 +64,18 @@ const Navbar = () => {
             className="overflow-hidden border-t border-border md:hidden"
           >
             <div className="flex flex-col gap-2 px-4 py-4">
-              {["Discover", "Embroidery", "Candles", "Rugs", "Gifting"].map((item) => (
+              {[
+                { label: "Discover", to: "/categories" },
+                { label: "Collaborate", to: "/sell" },
+                { label: "About Us", to: "/about" },
+              ].map((item) => (
                 <Link
-                  key={item}
-                  to={item === "Discover" ? "/categories" : `/categories/${item.toLowerCase()}`}
+                  key={item.label}
+                  to={item.to}
                   className="rounded-md px-3 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted"
                   onClick={() => setMobileOpen(false)}
                 >
-                  {item}
+                  {item.label}
                 </Link>
               ))}
             </div>
