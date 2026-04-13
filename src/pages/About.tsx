@@ -35,7 +35,7 @@ const About = () => {
       {/* Section A: The Sellers / Makers */}
       <section className="py-20">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
+          <div className="mx-auto max-w-2xl">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
