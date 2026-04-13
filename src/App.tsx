@@ -8,6 +8,7 @@ import Auth from "./pages/Auth";
 import SellerAuth from "./pages/SellerAuth";
 import SellerApply from "./pages/SellerApply";
 import NotFound from "./pages/NotFound";
+import Discover from "./pages/Discover";
 import CustomCursor from "./components/CustomCursor";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/auth" element={<Auth />} />
           <Route path="/sell" element={<SellerAuth />} />
           <Route path="/sell/apply" element={<SellerApply />} />
+          <Route path="/categories" element={<Discover />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
