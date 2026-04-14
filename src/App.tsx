@@ -10,6 +10,7 @@ import SellerApply from "./pages/SellerApply";
 import NotFound from "./pages/NotFound";
 import Discover from "./pages/Discover";
 import About from "./pages/About";
+import ProductDetail from "./pages/ProductDetail";
 import CustomCursor from "./components/CustomCursor";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/sell/apply" element={<SellerApply />} />
           <Route path="/categories" element={<Discover />} />
           <Route path="/about" element={<About />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
