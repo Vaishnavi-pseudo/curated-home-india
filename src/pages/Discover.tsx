@@ -272,9 +272,13 @@ const Discover = () => {
                         </button>
                       </div>
                       <div className="mt-3 space-y-1">
-                        <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                        <Link
+                          to={`/brand/${product.brand.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`}
+                          className="text-xs font-medium uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors"
+                          onClick={(e) => e.stopPropagation()}
+                        >
                           {product.brand}
-                        </p>
+                        </Link>
                         <h3 className="font-sans text-sm font-medium text-foreground line-clamp-1">
                           {product.name}
                         </h3>
