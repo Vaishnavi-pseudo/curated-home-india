@@ -254,30 +254,35 @@ const Discover = () => {
                     transition={{ duration: 0.4, delay: i * 0.04 }}
                     className="group cursor-pointer"
                   >
-                    <div className="relative overflow-hidden rounded-2xl">
-                      <div className="aspect-[4/5] overflow-hidden bg-muted">
-                        <img
-                          src={product.image}
-                          alt={product.name}
-                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                          loading="lazy"
-                        />
+                    <Link to={`/product/${product.id}`}>
+                      <div className="relative overflow-hidden rounded-2xl">
+                        <div className="aspect-[4/5] overflow-hidden bg-muted">
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            loading="lazy"
+                          />
+                        </div>
+                        <button
+                          className="absolute right-3 top-3 rounded-full bg-background/80 p-2 backdrop-blur-sm transition-colors hover:bg-background"
+                          onClick={(e) => e.preventDefault()}
+                        >
+                          <Heart className="h-4 w-4 text-foreground" />
+                        </button>
                       </div>
-                      <button className="absolute right-3 top-3 rounded-full bg-background/80 p-2 backdrop-blur-sm transition-colors hover:bg-background">
-                        <Heart className="h-4 w-4 text-foreground" />
-                      </button>
-                    </div>
-                    <div className="mt-3 space-y-1">
-                      <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                        {product.brand}
-                      </p>
-                      <h3 className="font-sans text-sm font-medium text-foreground line-clamp-1">
-                        {product.name}
-                      </h3>
-                      <p className="font-sans text-sm font-semibold text-primary">
-                        ₹{product.price.toLocaleString("en-IN")}
-                      </p>
-                    </div>
+                      <div className="mt-3 space-y-1">
+                        <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                          {product.brand}
+                        </p>
+                        <h3 className="font-sans text-sm font-medium text-foreground line-clamp-1">
+                          {product.name}
+                        </h3>
+                        <p className="font-sans text-sm font-semibold text-primary">
+                          ₹{product.price.toLocaleString("en-IN")}
+                        </p>
+                      </div>
+                    </Link>
                   </motion.div>
                 ))}
               </div>
