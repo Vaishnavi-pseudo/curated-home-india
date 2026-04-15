@@ -21,14 +21,33 @@ const SellerAuth = () => {
     const checkSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
-        navigate("/sell/apply");
+        // Check if user already has a seller profile
+        const { data: profile } = await supabase
+          .from("seller_profiles")
+          .select("id")
+          .eq("user_id", session.user.id)
+          .maybeSingle();
+        if (profile) {
+          navigate("/sell/dashboard");
+        } else {
+          navigate("/sell/apply");
+        }
       }
     };
     checkSession();
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
       if (session) {
-        navigate("/sell/apply");
+        const { data: profile } = await supabase
+          .from("seller_profiles")
+          .select("id")
+          .eq("user_id", session.user.id)
+          .maybeSingle();
+        if (profile) {
+          navigate("/sell/dashboard");
+        } else {
+          navigate("/sell/apply");
+        }
       }
     });
     return () => subscription.unsubscribe();
