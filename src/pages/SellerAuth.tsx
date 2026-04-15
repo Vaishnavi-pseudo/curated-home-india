@@ -15,42 +15,49 @@ const SellerAuth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [checking, setChecking] = useState(true);
   const [form, setForm] = useState({ email: "", password: "", fullName: "" });
 
   useEffect(() => {
+    let cancelled = false;
+
+    const redirectBasedOnProfile = async (userId: string) => {
+      const { data: profile } = await supabase
+        .from("seller_profiles")
+        .select("id")
+        .eq("user_id", userId)
+        .maybeSingle();
+      if (cancelled) return;
+      if (profile) {
+        navigate("/sell/dashboard", { replace: true });
+      } else {
+        navigate("/sell/apply", { replace: true });
+      }
+    };
+
     const checkSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
+      if (cancelled) return;
       if (session) {
-        // Check if user already has a seller profile
-        const { data: profile } = await supabase
-          .from("seller_profiles")
-          .select("id")
-          .eq("user_id", session.user.id)
-          .maybeSingle();
-        if (profile) {
-          navigate("/sell/dashboard");
-        } else {
-          navigate("/sell/apply");
-        }
+        await redirectBasedOnProfile(session.user.id);
+      } else {
+        setChecking(false);
       }
     };
     checkSession();
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      if (cancelled) return;
       if (session) {
-        const { data: profile } = await supabase
-          .from("seller_profiles")
-          .select("id")
-          .eq("user_id", session.user.id)
-          .maybeSingle();
-        if (profile) {
-          navigate("/sell/dashboard");
-        } else {
-          navigate("/sell/apply");
-        }
+        await redirectBasedOnProfile(session.user.id);
+      } else {
+        setChecking(false);
       }
     });
-    return () => subscription.unsubscribe();
+    return () => {
+      cancelled = true;
+      subscription.unsubscribe();
+    };
   }, [navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -82,6 +89,17 @@ const SellerAuth = () => {
       setLoading(false);
     }
   };
+
+  if (checking) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <div className="flex items-center justify-center py-32">
+          <div className="animate-pulse text-muted-foreground font-sans">Checking access...</div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background">

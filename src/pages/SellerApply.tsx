@@ -34,6 +34,7 @@ const createEmptyProduct = (): ProductEntry => ({
 const SellerApply = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [pageLoading, setPageLoading] = useState(true);
   const [submitted, setSubmitted] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
   const [products, setProducts] = useState<ProductEntry[]>([createEmptyProduct()]);
@@ -50,26 +51,34 @@ const SellerApply = () => {
   const isOtherCategory = form.categoryId === "__other__";
 
   useEffect(() => {
+    let cancelled = false;
+
     const checkAuth = async () => {
       const { data: { session } } = await supabase.auth.getSession();
-      if (!session) { navigate("/sell"); return; }
+      if (cancelled) return;
+      if (!session) { navigate("/sell", { replace: true }); return; }
       const { data: existing } = await supabase
         .from("seller_applications")
         .select("id, status")
         .eq("user_id", session.user.id)
         .maybeSingle();
+      if (cancelled) return;
       if (existing) setSubmitted(true);
+      setPageLoading(false);
     };
     const fetchCategories = async () => {
       const { data } = await supabase.from("categories").select("*");
-      if (data) setCategories(data);
+      if (!cancelled && data) setCategories(data);
     };
     checkAuth();
     fetchCategories();
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      if (!session) navigate("/sell");
+      if (!cancelled && !session) navigate("/sell", { replace: true });
     });
-    return () => subscription.unsubscribe();
+    return () => {
+      cancelled = true;
+      subscription.unsubscribe();
+    };
   }, [navigate]);
 
   // Product management
@@ -180,6 +189,17 @@ const SellerApply = () => {
       setLoading(false);
     }
   };
+
+  if (pageLoading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <div className="flex items-center justify-center py-32">
+          <div className="animate-pulse text-muted-foreground font-sans">Loading...</div>
+        </div>
+      </div>
+    );
+  }
 
   if (submitted) {
     return (
