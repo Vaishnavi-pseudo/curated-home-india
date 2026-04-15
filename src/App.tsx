@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import SellerAuth from "./pages/SellerAuth";
 import SellerApply from "./pages/SellerApply";
+import SellerDashboard from "./pages/SellerDashboard";
 import NotFound from "./pages/NotFound";
 import Discover from "./pages/Discover";
 import About from "./pages/About";
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/auth" element={<Auth />} />
           <Route path="/sell" element={<SellerAuth />} />
           <Route path="/sell/apply" element={<SellerApply />} />
+          <Route path="/sell/dashboard" element={<SellerDashboard />} />
           <Route path="/categories" element={<Discover />} />
           <Route path="/about" element={<About />} />
           <Route path="/product/:id" element={<ProductDetail />} />
