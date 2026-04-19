@@ -52,7 +52,7 @@ const HeroSection = () => {
               <div className="space-y-4">
                 <Link to="/categories?category=embroidery" className="block aspect-[3/4] overflow-hidden rounded-2xl bg-sand">
                   <img
-                    src="https://images.unsplash.com/photo-1617634643784-5745ec0e54dc?w=400&h=530&fit=crop"
+                    src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=530&fit=crop"
                     alt="Handmade embroidery"
                     className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                   />
@@ -75,7 +75,7 @@ const HeroSection = () => {
                 </Link>
                 <Link to="/categories?category=handmade-gifting" className="block aspect-[3/4] overflow-hidden rounded-2xl bg-sand">
                   <img
-                    src="https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400&h=530&fit=crop"
+                    src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=400&h=530&fit=crop"
                     alt="Handmade gifts"
                     className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                   />
