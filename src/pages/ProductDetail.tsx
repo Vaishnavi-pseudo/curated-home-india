@@ -24,6 +24,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
+import { useShop } from "@/context/ShopContext";
 
 // Same product data as Discover page — later will come from DB
 const allProducts = [
@@ -55,6 +56,7 @@ const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { addToCart, toggleWishlist, isWishlisted } = useShop();
 
   const product = allProducts.find((p) => p.id === Number(id));
 
@@ -65,7 +67,7 @@ const ProductDetail = () => {
   const [referencePreview, setReferencePreview] = useState<string[]>([]);
   const [creativityLevel, setCreativityLevel] = useState("inspired");
   const [customNotes, setCustomNotes] = useState("");
-  const [wishlisted, setWishlisted] = useState(false);
+  const wishlisted = product ? isWishlisted(product.id) : false;
 
   if (!product) {
     return (
@@ -105,17 +107,18 @@ const ProductDetail = () => {
   };
 
   const handleAddToCart = () => {
-    toast({
-      title: "Added to cart",
-      description: `${product.name} × ${quantity} added to your cart.`,
-    });
+    addToCart(
+      { id: product.id, name: product.name, price: product.price, image: product.image, brand: product.brand },
+      quantity,
+    );
   };
 
   const handleBuyNow = () => {
-    toast({
-      title: "Proceeding to checkout",
-      description: `Buying ${product.name} × ${quantity}`,
-    });
+    addToCart(
+      { id: product.id, name: product.name, price: product.price, image: product.image, brand: product.brand },
+      quantity,
+    );
+    navigate("/cart");
   };
 
   const discount = product.comparePrice
@@ -392,10 +395,7 @@ const ProductDetail = () => {
                     : "border-border text-muted-foreground"
                 }`}
                 onClick={() => {
-                  setWishlisted(!wishlisted);
-                  toast({
-                    title: wishlisted ? "Removed from wishlist" : "Added to wishlist",
-                  });
+                  toggleWishlist({ id: product.id, name: product.name, price: product.price, image: product.image, brand: product.brand });
                 }}
               >
                 <Heart className={`h-5 w-5 ${wishlisted ? "fill-current" : ""}`} />
