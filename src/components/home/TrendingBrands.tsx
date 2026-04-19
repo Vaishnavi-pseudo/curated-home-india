@@ -1,12 +1,15 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { BadgeCheck, Instagram } from "lucide-react";
+import { slugify } from "@/lib/slug";
 
 const brands = [
   { name: "The Stitch Studio", category: "Embroidery", handle: "@thestitchstudio", image: "https://images.unsplash.com/photo-1594897030264-ab7d87efc473?w=300&h=300&fit=crop", verified: true },
   { name: "Lumière Candles", category: "Candles", handle: "@lumierecandles", image: "https://images.unsplash.com/photo-1603006905003-be475563bc59?w=300&h=300&fit=crop", verified: true },
   { name: "Dharaa Rugs", category: "Rugs", handle: "@dharaarugs", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=300&fit=crop", verified: true },
-  { name: "Wrapped with Joy", category: "Gifting", handle: "@wrappedwithjoy", image: "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?w=300&h=300&fit=crop", verified: false },
-  { name: "Kashmiri Weaves", category: "Embroidery", handle: "@kashmiriweaves", image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=300&h=300&fit=crop", verified: true },
+  { name: "Clay & Fire", category: "Pottery", handle: "@clayandfire", image: "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?w=300&h=300&fit=crop", verified: true },
+  { name: "Rangrez", category: "Textiles", handle: "@rangrez_textiles", image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=300&h=300&fit=crop", verified: true },
+  { name: "Knot & Thread", category: "Home Décor", handle: "@knotandthread", image: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=300&h=300&fit=crop", verified: false },
 ];
 
 const TrendingBrands = () => {
@@ -30,13 +33,17 @@ const TrendingBrands = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="min-w-[220px] flex-shrink-0 cursor-pointer"
+              className="min-w-[220px] flex-shrink-0"
             >
-              <div className="group rounded-2xl border border-border bg-background p-5 text-center transition-shadow duration-300 hover:shadow-lg">
+              <Link
+                to={`/brand/${slugify(brand.name)}`}
+                className="group block rounded-2xl border border-border bg-background p-5 text-center transition-shadow duration-300 hover:shadow-lg"
+              >
                 <div className="mx-auto mb-4 h-24 w-24 overflow-hidden rounded-full border-2 border-sand">
                   <img
                     src={brand.image}
                     alt={brand.name}
+                    loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
@@ -53,7 +60,7 @@ const TrendingBrands = () => {
                   <Instagram className="h-3 w-3" />
                   {brand.handle}
                 </div>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </div>

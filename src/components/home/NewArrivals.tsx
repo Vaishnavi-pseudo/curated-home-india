@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import { Heart } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { slugify } from "@/lib/slug";
 
 const products = [
   { id: 1, name: "Chikankari Cushion Cover Set", price: 1499, image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=500&fit=crop", brand: "The Stitch Studio", category: "Embroidery" },
@@ -24,9 +26,11 @@ const NewArrivals = () => {
               Fresh finds from our artisan community
             </p>
           </div>
-          <Button variant="outline" className="hidden rounded-full font-sans text-sm md:inline-flex">
-            View All
-          </Button>
+          <Link to="/categories">
+            <Button variant="outline" className="hidden rounded-full font-sans text-sm md:inline-flex">
+              View All
+            </Button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
@@ -39,29 +43,39 @@ const NewArrivals = () => {
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="group cursor-pointer"
             >
-              <div className="relative overflow-hidden rounded-2xl">
-                <div className="aspect-[4/5] overflow-hidden bg-sand">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+              <Link to={`/product/${product.id}`} className="block">
+                <div className="relative overflow-hidden rounded-2xl">
+                  <div className="aspect-[4/5] overflow-hidden bg-sand">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <button
+                    onClick={(e) => e.preventDefault()}
+                    className="absolute right-3 top-3 rounded-full bg-background/80 p-2 backdrop-blur-sm transition-colors hover:bg-background"
+                  >
+                    <Heart className="h-4 w-4 text-foreground" />
+                  </button>
                 </div>
-                <button className="absolute right-3 top-3 rounded-full bg-background/80 p-2 backdrop-blur-sm transition-colors hover:bg-background">
-                  <Heart className="h-4 w-4 text-foreground" />
-                </button>
-              </div>
-              <div className="mt-3 space-y-1">
-                <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-                  {product.brand}
-                </p>
-                <h3 className="font-sans text-sm font-medium text-foreground line-clamp-1">
-                  {product.name}
-                </h3>
-                <p className="font-sans text-sm font-semibold text-primary">
-                  ₹{product.price.toLocaleString("en-IN")}
-                </p>
-              </div>
+                <div className="mt-3 space-y-1">
+                  <Link
+                    to={`/brand/${slugify(product.brand)}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className="text-xs font-medium uppercase tracking-wider text-muted-foreground transition-colors hover:text-primary"
+                  >
+                    {product.brand}
+                  </Link>
+                  <h3 className="font-sans text-sm font-medium text-foreground line-clamp-1">
+                    {product.name}
+                  </h3>
+                  <p className="font-sans text-sm font-semibold text-primary">
+                    ₹{product.price.toLocaleString("en-IN")}
+                  </p>
+                </div>
+              </Link>
             </motion.div>
           ))}
         </div>

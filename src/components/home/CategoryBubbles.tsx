@@ -39,7 +39,7 @@ const CategoryBubbles = () => {
               className="flex flex-col items-center gap-2.5 flex-shrink-0"
             >
               <Link
-                to={`/categories/${cat.slug}`}
+                to={`/categories?category=${cat.slug}`}
                 className="group flex flex-col items-center gap-2.5"
               >
                 <div className="h-20 w-20 md:h-24 md:w-24 rounded-full overflow-hidden border-2 border-border transition-all duration-300 group-hover:scale-110 group-hover:border-primary group-hover:shadow-md">
