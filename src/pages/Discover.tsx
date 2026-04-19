@@ -7,6 +7,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useShop } from "@/context/ShopContext";
 
 const categories = [
   { name: "All", slug: "all" },
@@ -56,6 +57,7 @@ const allProducts = [
 
 const Discover = () => {
   const isMobile = useIsMobile();
+  const { toggleWishlist, isWishlisted } = useShop();
   const [searchParams, setSearchParams] = useSearchParams();
   const initialCategory = searchParams.get("category") ?? "all";
   const [activeCategory, setActiveCategory] = useState(
@@ -289,9 +291,14 @@ const Discover = () => {
                         </div>
                         <button
                           className="absolute right-3 top-3 rounded-full bg-background/80 p-2 backdrop-blur-sm transition-colors hover:bg-background"
-                          onClick={(e) => e.preventDefault()}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            toggleWishlist({ id: product.id, name: product.name, price: product.price, image: product.image, brand: product.brand });
+                          }}
+                          aria-label="Toggle wishlist"
                         >
-                          <Heart className="h-4 w-4 text-foreground" />
+                          <Heart className={`h-4 w-4 ${isWishlisted(product.id) ? "fill-destructive text-destructive" : "text-foreground"}`} />
                         </button>
                       </div>
                       <div className="mt-3 space-y-1">
