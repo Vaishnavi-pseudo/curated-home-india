@@ -3,6 +3,7 @@ import { Heart } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { slugify } from "@/lib/slug";
+import { useShop } from "@/context/ShopContext";
 
 const products = [
   { id: 1, name: "Chikankari Cushion Cover Set", price: 1499, image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=500&fit=crop", brand: "The Stitch Studio", category: "Embroidery" },
@@ -14,6 +15,7 @@ const products = [
 ];
 
 const NewArrivals = () => {
+  const { toggleWishlist, isWishlisted } = useShop();
   return (
     <section className="bg-background py-20">
       <div className="container mx-auto px-4 lg:px-8">
@@ -54,10 +56,15 @@ const NewArrivals = () => {
                     />
                   </div>
                   <button
-                    onClick={(e) => e.preventDefault()}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      toggleWishlist({ id: product.id, name: product.name, price: product.price, image: product.image, brand: product.brand });
+                    }}
+                    aria-label="Toggle wishlist"
                     className="absolute right-3 top-3 rounded-full bg-background/80 p-2 backdrop-blur-sm transition-colors hover:bg-background"
                   >
-                    <Heart className="h-4 w-4 text-foreground" />
+                    <Heart className={`h-4 w-4 ${isWishlisted(product.id) ? "fill-destructive text-destructive" : "text-foreground"}`} />
                   </button>
                 </div>
                 <div className="mt-3 space-y-1">

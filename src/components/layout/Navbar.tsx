@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { Heart, ShoppingBag, Search, Menu, X, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import { useShop } from "@/context/ShopContext";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { cartCount, wishlistCount } = useShop();
 
   return (
     <nav className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
@@ -33,14 +35,24 @@ const Navbar = () => {
           <Button variant="ghost" size="icon" className="hidden md:flex">
             <Search className="h-5 w-5" />
           </Button>
-          <Link to="/wishlist">
-            <Button variant="ghost" size="icon">
+          <Link to="/wishlist" aria-label="Wishlist">
+            <Button variant="ghost" size="icon" className="relative">
               <Heart className="h-5 w-5" />
+              {wishlistCount > 0 && (
+                <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-semibold text-primary-foreground">
+                  {wishlistCount}
+                </span>
+              )}
             </Button>
           </Link>
-          <Link to="/cart">
-            <Button variant="ghost" size="icon">
+          <Link to="/cart" aria-label="Cart">
+            <Button variant="ghost" size="icon" className="relative">
               <ShoppingBag className="h-5 w-5" />
+              {cartCount > 0 && (
+                <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-semibold text-primary-foreground">
+                  {cartCount}
+                </span>
+              )}
             </Button>
           </Link>
           <Link to="/auth">
