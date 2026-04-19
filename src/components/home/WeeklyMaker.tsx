@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -43,9 +44,11 @@ const WeeklyMaker = () => {
             <p className="text-sm text-muted-foreground text-center sm:text-left">
               Jaipur-based studio crafting eco-friendly candles with indigenous fragrances.
             </p>
-            <Button className="gap-2 shrink-0">
-              Explore Brand <ArrowRight className="h-4 w-4" />
-            </Button>
+            <Link to="/brand/lumiere-candles">
+              <Button className="gap-2 shrink-0">
+                Explore Brand <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
           </div>
         </motion.div>
       </div>

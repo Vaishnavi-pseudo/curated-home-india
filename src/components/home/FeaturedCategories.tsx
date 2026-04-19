@@ -51,7 +51,7 @@ const FeaturedCategories = () => {
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
               <Link
-                to={`/categories/${cat.slug}`}
+                to={`/categories?category=${cat.slug}`}
                 className="group relative block overflow-hidden rounded-2xl"
               >
                 <div className="aspect-[3/4] overflow-hidden">
