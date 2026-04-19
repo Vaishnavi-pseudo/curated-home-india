@@ -50,36 +50,36 @@ const HeroSection = () => {
           >
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
-                <div className="aspect-[3/4] overflow-hidden rounded-2xl bg-sand">
+                <Link to="/categories?category=embroidery" className="block aspect-[3/4] overflow-hidden rounded-2xl bg-sand">
                   <img
                     src="https://images.unsplash.com/photo-1617634643784-5745ec0e54dc?w=400&h=530&fit=crop"
                     alt="Handmade embroidery"
                     className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                   />
-                </div>
-                <div className="aspect-square overflow-hidden rounded-2xl bg-sand">
+                </Link>
+                <Link to="/categories?category=candles" className="block aspect-square overflow-hidden rounded-2xl bg-sand">
                   <img
                     src="https://images.unsplash.com/photo-1602607663604-59c816e08f1a?w=400&h=400&fit=crop"
                     alt="Artisanal candles"
                     className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                   />
-                </div>
+                </Link>
               </div>
               <div className="mt-8 space-y-4">
-                <div className="aspect-square overflow-hidden rounded-2xl bg-sand">
+                <Link to="/categories?category=rugs" className="block aspect-square overflow-hidden rounded-2xl bg-sand">
                   <img
                     src="https://images.unsplash.com/photo-1600166898405-da9535204843?w=400&h=400&fit=crop"
                     alt="Handwoven rug"
                     className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                   />
-                </div>
-                <div className="aspect-[3/4] overflow-hidden rounded-2xl bg-sand">
+                </Link>
+                <Link to="/categories?category=handmade-gifting" className="block aspect-[3/4] overflow-hidden rounded-2xl bg-sand">
                   <img
                     src="https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=400&h=530&fit=crop"
                     alt="Handmade gifts"
                     className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                   />
-                </div>
+                </Link>
               </div>
             </div>
           </motion.div>
