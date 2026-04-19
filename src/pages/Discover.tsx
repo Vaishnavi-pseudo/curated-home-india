@@ -1,6 +1,7 @@
-import { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { useState, useMemo, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { Heart, SlidersHorizontal, X, ChevronDown } from "lucide-react";
+import { slugify } from "@/lib/slug";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -55,10 +56,32 @@ const allProducts = [
 
 const Discover = () => {
   const isMobile = useIsMobile();
-  const [activeCategory, setActiveCategory] = useState("all");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialCategory = searchParams.get("category") ?? "all";
+  const [activeCategory, setActiveCategory] = useState(
+    categories.some((c) => c.slug === initialCategory) ? initialCategory : "all",
+  );
   const [activePriceRange, setActivePriceRange] = useState(0);
   const [activeSort, setActiveSort] = useState("newest");
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+
+  // Keep URL in sync so deep links / back-button work
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+    if (activeCategory === "all") params.delete("category");
+    else params.set("category", activeCategory);
+    setSearchParams(params, { replace: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeCategory]);
+
+  // React to URL changes (e.g. clicking a category link from elsewhere)
+  useEffect(() => {
+    const cat = searchParams.get("category") ?? "all";
+    if (cat !== activeCategory && categories.some((c) => c.slug === cat)) {
+      setActiveCategory(cat);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
 
   const filtered = useMemo(() => {
     let items = allProducts;
@@ -273,7 +296,7 @@ const Discover = () => {
                       </div>
                       <div className="mt-3 space-y-1">
                         <Link
-                          to={`/brand/${product.brand.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`}
+                          to={`/brand/${slugify(product.brand)}`}
                           className="text-xs font-medium uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors"
                           onClick={(e) => e.stopPropagation()}
                         >
