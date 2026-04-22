@@ -17,6 +17,7 @@ import {
   Sparkles,
   Plus,
   Minus,
+  MessageCircle,
 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -25,6 +26,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
 import { useShop } from "@/context/ShopContext";
+import BrandChatDrawer from "@/components/chat/BrandChatDrawer";
 
 // Same product data as Discover page — later will come from DB
 const allProducts = [
@@ -67,6 +69,7 @@ const ProductDetail = () => {
   const [referencePreview, setReferencePreview] = useState<string[]>([]);
   const [creativityLevel, setCreativityLevel] = useState("inspired");
   const [customNotes, setCustomNotes] = useState("");
+  const [chatOpen, setChatOpen] = useState(false);
   const wishlisted = product ? isWishlisted(product.id) : false;
 
   if (!product) {
@@ -389,6 +392,16 @@ const ProductDetail = () => {
               <Button
                 variant="outline"
                 size="icon"
+                aria-label="Chat with brand"
+                title="Chat with brand about customisation"
+                className="h-auto rounded-full border-border px-3 py-3 text-muted-foreground hover:border-primary hover:text-primary"
+                onClick={() => setChatOpen(true)}
+              >
+                <MessageCircle className="h-5 w-5" />
+              </Button>
+              <Button
+                variant="outline"
+                size="icon"
                 className={`h-auto rounded-full px-3 py-3 ${
                   wishlisted
                     ? "border-destructive bg-destructive/10 text-destructive"
@@ -423,6 +436,17 @@ const ProductDetail = () => {
           </div>
         </div>
       </div>
+
+      <BrandChatDrawer
+        open={chatOpen}
+        onOpenChange={setChatOpen}
+        target={{
+          brandName: product.brand,
+          productKey: product.id,
+          productName: product.name,
+          productImage: product.image,
+        }}
+      />
 
       <Footer />
     </div>
