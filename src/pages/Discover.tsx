@@ -85,17 +85,27 @@ const Discover = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
+  const searchQuery = (searchParams.get("q") ?? "").toLowerCase().trim();
+
   const filtered = useMemo(() => {
     let items = allProducts;
     if (activeCategory !== "all") {
       items = items.filter((p) => p.category === activeCategory);
+    }
+    if (searchQuery) {
+      items = items.filter(
+        (p) =>
+          p.name.toLowerCase().includes(searchQuery) ||
+          p.brand.toLowerCase().includes(searchQuery) ||
+          p.category.toLowerCase().includes(searchQuery),
+      );
     }
     const range = priceRanges[activePriceRange];
     items = items.filter((p) => p.price >= range.min && p.price <= range.max);
     if (activeSort === "price-asc") items = [...items].sort((a, b) => a.price - b.price);
     else if (activeSort === "price-desc") items = [...items].sort((a, b) => b.price - a.price);
     return items;
-  }, [activeCategory, activePriceRange, activeSort]);
+  }, [activeCategory, activePriceRange, activeSort, searchQuery]);
 
   const activeCategoryName = categories.find((c) => c.slug === activeCategory)?.name ?? "All";
 
