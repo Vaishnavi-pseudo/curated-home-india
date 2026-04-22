@@ -16,6 +16,7 @@ import BrandProfile from "./pages/BrandProfile";
 import Wishlist from "./pages/Wishlist";
 import Cart from "./pages/Cart";
 import CustomCursor from "./components/CustomCursor";
+import ScrollToTop from "./components/ScrollToTop";
 import { ShopProvider } from "./context/ShopContext";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
