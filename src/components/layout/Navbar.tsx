@@ -1,13 +1,26 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Heart, ShoppingBag, Search, Menu, X, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { motion, AnimatePresence } from "framer-motion";
 import { useShop } from "@/context/ShopContext";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
   const { cartCount, wishlistCount } = useShop();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const q = query.trim();
+    setSearchOpen(false);
+    setQuery("");
+    navigate(q ? `/categories?q=${encodeURIComponent(q)}` : "/categories");
+  };
 
   return (
     <nav className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
@@ -32,9 +45,40 @@ const Navbar = () => {
 
         {/* Right icons */}
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="icon" className="hidden md:flex">
+          <Button variant="ghost" size="icon" className="hidden md:flex" onClick={() => setSearchOpen(true)} aria-label="Search">
             <Search className="h-5 w-5" />
           </Button>
+          <Dialog open={searchOpen} onOpenChange={setSearchOpen}>
+            <DialogContent className="sm:max-w-lg">
+              <DialogHeader>
+                <DialogTitle className="font-serif">Search Kalakriti</DialogTitle>
+              </DialogHeader>
+              <form onSubmit={handleSearch} className="flex gap-2">
+                <Input
+                  autoFocus
+                  placeholder="Search products, brands, categories…"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+                <Button type="submit">Search</Button>
+              </form>
+              <div className="flex flex-wrap gap-2 pt-2">
+                {["Embroidery", "Candles", "Rugs", "Jewellery", "Pottery"].map((t) => (
+                  <button
+                    key={t}
+                    type="button"
+                    onClick={() => {
+                      setSearchOpen(false);
+                      navigate(`/categories?category=${t.toLowerCase()}`);
+                    }}
+                    className="rounded-full border border-border px-3 py-1 text-xs text-muted-foreground hover:bg-muted hover:text-foreground"
+                  >
+                    {t}
+                  </button>
+                ))}
+              </div>
+            </DialogContent>
+          </Dialog>
           <Link to="/wishlist" aria-label="Wishlist">
             <Button variant="ghost" size="icon" className="relative">
               <Heart className="h-5 w-5" />
