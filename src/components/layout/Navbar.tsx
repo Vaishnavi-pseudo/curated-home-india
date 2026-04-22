@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Heart, ShoppingBag, Search, Menu, X, User } from "lucide-react";
+import { Heart, ShoppingBag, Search, Menu, X, User, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -79,6 +79,11 @@ const Navbar = () => {
               </div>
             </DialogContent>
           </Dialog>
+          <Link to="/messages" aria-label="Messages" className="hidden md:inline-flex">
+            <Button variant="ghost" size="icon">
+              <MessageCircle className="h-5 w-5" />
+            </Button>
+          </Link>
           <Link to="/wishlist" aria-label="Wishlist">
             <Button variant="ghost" size="icon" className="relative">
               <Heart className="h-5 w-5" />
