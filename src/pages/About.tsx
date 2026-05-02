@@ -110,7 +110,6 @@ const About = () => {
                       <Users className="h-10 w-10 text-primary" />
                     </div>
                     <h3 className="font-serif text-2xl font-bold text-foreground">sol.finds</h3>
-                    <p className="mt-2 text-sm text-muted-foreground">कला + कृति — Art + Creation</p>
                     <div className="mt-6 grid grid-cols-3 gap-4 text-center">
                       <div>
                         <p className="font-serif text-2xl font-bold text-primary">50+</p>
