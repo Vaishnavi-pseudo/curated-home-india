@@ -36,7 +36,7 @@ const HeroSection = () => {
               </Link>
               <Link to="/sell">
                 <Button variant="outline" size="lg" className="rounded-full px-8 font-sans text-sm font-semibold">
-                  Sell on Kalakriti
+                  Sell on sol.finds
                 </Button>
               </Link>
             </div>

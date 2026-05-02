@@ -31,7 +31,7 @@ const Footer = () => {
         <div className="grid gap-12 md:grid-cols-4">
           {/* Brand */}
           <div className="space-y-4">
-            <Link to="/" className="font-serif text-2xl font-bold text-foreground">Kalakriti</Link>
+            <Link to="/" className="font-serif text-2xl font-bold text-foreground">sol.finds</Link>
             <p className="text-sm leading-relaxed text-muted-foreground">
               India's curated discovery platform for homegrown Instagram brands. Handmade, authentic, and crafted with love.
             </p>
@@ -39,7 +39,7 @@ const Footer = () => {
               <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="rounded-full bg-muted p-2 transition-colors hover:bg-primary hover:text-primary-foreground">
                 <Instagram className="h-4 w-4" />
               </a>
-              <a href="mailto:hello@kalakriti.in" aria-label="Email" className="rounded-full bg-muted p-2 transition-colors hover:bg-primary hover:text-primary-foreground">
+              <a href="mailto:hello@sol.finds" aria-label="Email" className="rounded-full bg-muted p-2 transition-colors hover:bg-primary hover:text-primary-foreground">
                 <Mail className="h-4 w-4" />
               </a>
             </div>
@@ -84,7 +84,7 @@ const Footer = () => {
 
         <div className="mt-12 border-t border-border pt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Kalakriti. All rights reserved. Made with ♥ in India.
+            © {new Date().getFullYear()} sol.finds. All rights reserved. Made with ♥ in India.
           </p>
         </div>
       </div>

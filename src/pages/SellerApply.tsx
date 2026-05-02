@@ -212,7 +212,7 @@ const SellerApply = () => {
             </div>
             <h2 className="font-serif text-2xl font-bold text-foreground">Application Submitted!</h2>
             <p className="mt-3 text-muted-foreground">
-              Thank you for applying to sell on Kalakriti. Our team will review your application and get back to you within 3–5 business days.
+              Thank you for applying to sell on sol.finds. Our team will review your application and get back to you within 3–5 business days.
             </p>
             <Button onClick={() => navigate("/")} className="mt-8 rounded-full px-8 font-sans">Back to Home</Button>
           </motion.div>

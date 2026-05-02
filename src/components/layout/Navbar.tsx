@@ -27,7 +27,7 @@ const Navbar = () => {
       <div className="container mx-auto flex h-16 items-center justify-between px-4 lg:px-8">
         {/* Logo */}
         <Link to="/" className="font-serif text-2xl font-bold tracking-tight text-foreground">
-          Kalakriti
+          sol.finds
         </Link>
 
         {/* Desktop Nav */}
@@ -51,7 +51,7 @@ const Navbar = () => {
           <Dialog open={searchOpen} onOpenChange={setSearchOpen}>
             <DialogContent className="sm:max-w-lg">
               <DialogHeader>
-                <DialogTitle className="font-serif">Search Kalakriti</DialogTitle>
+                <DialogTitle className="font-serif">Search sol.finds</DialogTitle>
               </DialogHeader>
               <form onSubmit={handleSearch} className="flex gap-2">
                 <Input

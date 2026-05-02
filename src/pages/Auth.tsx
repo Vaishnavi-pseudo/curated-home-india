@@ -67,7 +67,7 @@ const Auth = () => {
           <Card className="border-border bg-card shadow-lg">
             <CardHeader className="text-center">
               <CardTitle className="font-serif text-2xl">
-                {isLogin ? "Welcome Back" : "Join Kalakriti"}
+                {isLogin ? "Welcome Back" : "Join sol.finds"}
               </CardTitle>
               <CardDescription>
                 {isLogin

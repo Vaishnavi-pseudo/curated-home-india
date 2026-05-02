@@ -25,7 +25,7 @@ const About = () => {
               Where Craft Meets <span className="text-primary">Community</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Kalakriti exists at the intersection of passion and purpose — bridging the gap 
+              sol.finds exists at the intersection of passion and purpose — bridging the gap 
               between India's most talented makers and the people who value what they create.
             </p>
           </motion.div>
@@ -51,7 +51,7 @@ const About = () => {
                 Artisans Who Pour Their Soul Into Every Piece
               </h2>
               <p className="text-lg leading-relaxed text-muted-foreground">
-                Behind every product on Kalakriti is a maker with calloused hands and a restless imagination. 
+                Behind every product on sol.finds is a maker with calloused hands and a restless imagination. 
                 They aren't factories — they're dreamers who turned their kitchen tables into workshops, 
                 their balconies into dyeing stations, their spare rooms into studios.
               </p>
@@ -92,7 +92,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Section B: We, The Brand — Kalakriti */}
+      {/* Section B: We, The Brand — sol.finds */}
       <section className="py-20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid items-center gap-16 lg:grid-cols-2">
@@ -109,7 +109,7 @@ const About = () => {
                     <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
                       <Users className="h-10 w-10 text-primary" />
                     </div>
-                    <h3 className="font-serif text-2xl font-bold text-foreground">Kalakriti</h3>
+                    <h3 className="font-serif text-2xl font-bold text-foreground">sol.finds</h3>
                     <p className="mt-2 text-sm text-muted-foreground">कला + कृति — Art + Creation</p>
                     <div className="mt-6 grid grid-cols-3 gap-4 text-center">
                       <div>
@@ -145,7 +145,7 @@ const About = () => {
                 We're the Conduit, Not the Creator
               </h2>
               <p className="text-lg leading-relaxed text-muted-foreground">
-                Kalakriti is not another e-commerce platform. We are a curated bridge — connecting 
+                sol.finds is not another e-commerce platform. We are a curated bridge — connecting 
                 India's most talented homegrown artisans with people who believe in buying with meaning.
               </p>
               <p className="text-lg leading-relaxed text-muted-foreground">
