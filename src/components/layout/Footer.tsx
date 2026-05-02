@@ -39,7 +39,7 @@ const Footer = () => {
               <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="rounded-full bg-muted p-2 transition-colors hover:bg-primary hover:text-primary-foreground">
                 <Instagram className="h-4 w-4" />
               </a>
-              <a href="mailto:hello@sol.finds" aria-label="Email" className="rounded-full bg-muted p-2 transition-colors hover:bg-primary hover:text-primary-foreground">
+              <a href="mailto:sol.finds01@gmail.com" aria-label="Email" className="rounded-full bg-muted p-2 transition-colors hover:bg-primary hover:text-primary-foreground">
                 <Mail className="h-4 w-4" />
               </a>
             </div>
