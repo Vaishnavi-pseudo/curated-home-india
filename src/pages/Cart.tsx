@@ -152,6 +152,12 @@ const Cart = () => {
                     Add ₹{(999 - cartTotal).toLocaleString("en-IN")} more for free shipping
                   </p>
                 )}
+                <div className="flex justify-between text-muted-foreground">
+                  <span>GST (18%)</span>
+                  <span className="font-medium text-foreground">
+                    ₹{gst.toLocaleString("en-IN")}
+                  </span>
+                </div>
               </div>
               <Separator className="my-4" />
               <div className="flex items-baseline justify-between">
