@@ -14,8 +14,9 @@ const Cart = () => {
   const { toast } = useToast();
   const [processing, setProcessing] = useState(false);
 
-  const shipping = cartTotal > 999 || cartTotal === 0 ? 0 : 99;
-  const total = cartTotal + shipping;
+  const shipping = cartTotal >= 999 || cartTotal === 0 ? 0 : 90;
+  const gst = Math.round(cartTotal * 0.18);
+  const total = cartTotal + shipping + gst;
 
   const handleCheckout = () => {
     setProcessing(true);
@@ -151,6 +152,12 @@ const Cart = () => {
                     Add ₹{(999 - cartTotal).toLocaleString("en-IN")} more for free shipping
                   </p>
                 )}
+                <div className="flex justify-between text-muted-foreground">
+                  <span>GST (18%)</span>
+                  <span className="font-medium text-foreground">
+                    ₹{gst.toLocaleString("en-IN")}
+                  </span>
+                </div>
               </div>
               <Separator className="my-4" />
               <div className="flex items-baseline justify-between">
