@@ -19,7 +19,7 @@ const sellerLinks = [
 const supportLinks = [
   { label: "Help Center", to: "/about" },
   { label: "Shipping Info", to: "/about" },
-  { label: "Returns & Refunds", to: "/about" },
+  { label: "Returns & Refunds", to: "/returns" },
   { label: "Privacy Policy", to: "/about" },
   { label: "Terms of Service", to: "/about" },
 ];
