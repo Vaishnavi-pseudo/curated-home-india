@@ -17,6 +17,10 @@ import Wishlist from "./pages/Wishlist";
 import Cart from "./pages/Cart";
 import Messages from "./pages/Messages";
 import Returns from "./pages/Returns";
+import Terms from "./pages/Terms";
+import Privacy from "./pages/Privacy";
+import HelpCenter from "./pages/HelpCenter";
+import Shipping from "./pages/Shipping";
 import CustomCursor from "./components/CustomCursor";
 import ScrollToTop from "./components/ScrollToTop";
 import { ShopProvider } from "./context/ShopContext";
@@ -46,6 +50,10 @@ const App = () => (
             <Route path="/cart" element={<Cart />} />
             <Route path="/messages" element={<Messages />} />
             <Route path="/returns" element={<Returns />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/help" element={<HelpCenter />} />
+            <Route path="/shipping" element={<Shipping />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
