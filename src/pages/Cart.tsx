@@ -14,8 +14,9 @@ const Cart = () => {
   const { toast } = useToast();
   const [processing, setProcessing] = useState(false);
 
-  const shipping = cartTotal > 999 || cartTotal === 0 ? 0 : 99;
-  const total = cartTotal + shipping;
+  const shipping = cartTotal >= 999 || cartTotal === 0 ? 0 : 90;
+  const gst = Math.round(cartTotal * 0.18);
+  const total = cartTotal + shipping + gst;
 
   const handleCheckout = () => {
     setProcessing(true);
