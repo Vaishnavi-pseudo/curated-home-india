@@ -227,15 +227,18 @@ const ProductDetail = () => {
             </div>
 
             {/* Price */}
-            <div className="flex items-baseline gap-3">
-              <span className="font-serif text-3xl font-bold text-foreground">
-                ₹{product.price.toLocaleString("en-IN")}
-              </span>
-              {product.comparePrice && (
-                <span className="text-lg text-muted-foreground line-through">
-                  ₹{product.comparePrice.toLocaleString("en-IN")}
+            <div className="flex flex-col gap-1">
+              <span className="text-xs uppercase tracking-wider text-muted-foreground">Starting from</span>
+              <div className="flex items-baseline gap-3">
+                <span className="font-serif text-3xl font-bold text-foreground">
+                  ₹{product.price.toLocaleString("en-IN")}
                 </span>
-              )}
+                {product.comparePrice && (
+                  <span className="text-lg text-muted-foreground line-through">
+                    ₹{product.comparePrice.toLocaleString("en-IN")}
+                  </span>
+                )}
+              </div>
             </div>
 
             <p className="leading-relaxed text-muted-foreground">{product.description}</p>
