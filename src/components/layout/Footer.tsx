@@ -17,11 +17,11 @@ const sellerLinks = [
 ];
 
 const supportLinks = [
-  { label: "Help Center", to: "/about" },
-  { label: "Shipping Info", to: "/about" },
+  { label: "Help Center", to: "/help" },
+  { label: "Shipping Info", to: "/shipping" },
   { label: "Returns & Refunds", to: "/returns" },
-  { label: "Privacy Policy", to: "/about" },
-  { label: "Terms of Service", to: "/about" },
+  { label: "Privacy Policy", to: "/privacy" },
+  { label: "Terms of Service", to: "/terms" },
 ];
 
 const Footer = () => {
