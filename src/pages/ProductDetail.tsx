@@ -431,9 +431,14 @@ const ProductDetail = () => {
                 <p className="text-[10px] text-muted-foreground">Handcrafted</p>
               </div>
               <div className="flex flex-col items-center gap-1 text-center">
-                <RefreshCw className="h-5 w-5 text-primary" />
-                <p className="text-xs font-medium text-foreground">Easy Returns</p>
-                <p className="text-[10px] text-muted-foreground">7-day policy</p>
+                <Shield className="h-5 w-5 text-primary" />
+                <p className="text-xs font-medium text-foreground">Authentic</p>
+                <p className="text-[10px] text-muted-foreground">Handcrafted</p>
+              </div>
+              <div className="flex flex-col items-center gap-1 text-center">
+                <Truck className="h-5 w-5 text-primary" />
+                <p className="text-xs font-medium text-foreground">Free Shipping</p>
+                <p className="text-[10px] text-muted-foreground">Above ₹999</p>
               </div>
             </div>
           </div>
